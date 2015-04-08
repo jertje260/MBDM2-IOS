@@ -19,6 +19,14 @@ class LocalChatViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         Messages.delegate = self
         Messages.dataSource = self
+        //testmessage
+        var l = Line()
+        l.moment = NSDate()
+        l.message = "Testmessage"
+        l.user = User()
+        l.user?.displayName = "test"
+        MessagesModel.append(l)
+        
         loadMessages()
         // Set backbutton invisible
         self.navigationItem.hidesBackButton = true;
@@ -62,7 +70,7 @@ class LocalChatViewController: UIViewController, UITableViewDataSource, UITableV
         let cell = tableView.dequeueReusableCellWithIdentifier(MessageCellIdentifier, forIndexPath: indexPath) as UITableViewCell
         
         let row = indexPath.row
-        cell.textLabel?.text = "\(MessagesModel[row].moment): \(MessagesModel[row].user.displayName) wrote: \(MessagesModel[row].message)"
+        cell.textLabel?.text = "\(MessagesModel[row].user!.displayName!) wrote: \(MessagesModel[row].message!)"
         
         return cell
     }

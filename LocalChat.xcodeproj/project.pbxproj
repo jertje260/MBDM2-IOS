@@ -8,11 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		15473FBB1AA999EC00A82C81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15473FBA1AA999EC00A82C81 /* AppDelegate.swift */; };
-		15473FBD1AA999EC00A82C81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15473FBC1AA999EC00A82C81 /* ViewController.swift */; };
-		15473FC01AA999EC00A82C81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15473FBE1AA999EC00A82C81 /* Main.storyboard */; };
+		15473FBD1AA999EC00A82C81 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15473FBC1AA999EC00A82C81 /* LoginViewController.swift */; };
 		15473FC21AA999EC00A82C81 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15473FC11AA999EC00A82C81 /* Images.xcassets */; };
 		15473FC51AA999EC00A82C81 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15473FC31AA999EC00A82C81 /* LaunchScreen.xib */; };
 		15473FD11AA999EC00A82C81 /* LocalChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15473FD01AA999EC00A82C81 /* LocalChatTests.swift */; };
+		249FE6D31ABF09C1002EAA5D /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249FE6D21ABF09C1002EAA5D /* LocationController.swift */; };
+		249FE6D51ABF0D81002EAA5D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249FE6D41ABF0D81002EAA5D /* CoreLocation.framework */; };
+		4A6587D31ABC1FAB0008A949 /* LocalChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6587D21ABC1FAB0008A949 /* LocalChatViewController.swift */; };
+		4AC922AE1AC54D44007908E7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC922AD1AC54D44007908E7 /* User.swift */; };
+		4AC922B01AC5521C007908E7 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC922AF1AC5521C007908E7 /* Line.swift */; };
+		CE3DCD1F1AD5687600E394AE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DCD1E1AD5687600E394AE /* SettingsViewController.swift */; };
+		CE3DCD241AD596A800E394AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3DCD221AD596A800E394AE /* Main.storyboard */; };
+		CED39AB01AD3E6F2006D3109 /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED39AAF1AD3E6F2006D3109 /* JsonParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +36,20 @@
 		15473FB51AA999EC00A82C81 /* LocalChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15473FB91AA999EC00A82C81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15473FBA1AA999EC00A82C81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		15473FBC1AA999EC00A82C81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		15473FBF1AA999EC00A82C81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		15473FBC1AA999EC00A82C81 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		15473FC11AA999EC00A82C81 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		15473FC41AA999EC00A82C81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		15473FCA1AA999EC00A82C81 /* LocalChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15473FCF1AA999EC00A82C81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15473FD01AA999EC00A82C81 /* LocalChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalChatTests.swift; sourceTree = "<group>"; };
+		249FE6D21ABF09C1002EAA5D /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
+		249FE6D41ABF0D81002EAA5D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4A6587D21ABC1FAB0008A949 /* LocalChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalChatViewController.swift; sourceTree = "<group>"; };
+		4AC922AD1AC54D44007908E7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4AC922AF1AC5521C007908E7 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		CE3DCD1E1AD5687600E394AE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CE3DCD231AD596A800E394AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CED39AAF1AD3E6F2006D3109 /* JsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				249FE6D51ABF0D81002EAA5D /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +74,7 @@
 		15473FAC1AA999EC00A82C81 = {
 			isa = PBXGroup;
 			children = (
+				249FE6D41ABF0D81002EAA5D /* CoreLocation.framework */,
 				15473FB71AA999EC00A82C81 /* LocalChat */,
 				15473FCD1AA999EC00A82C81 /* LocalChatTests */,
 				15473FB61AA999EC00A82C81 /* Products */,
@@ -77,11 +93,14 @@
 		15473FB71AA999EC00A82C81 /* LocalChat */ = {
 			isa = PBXGroup;
 			children = (
-				15473FBA1AA999EC00A82C81 /* AppDelegate.swift */,
-				15473FBC1AA999EC00A82C81 /* ViewController.swift */,
-				15473FBE1AA999EC00A82C81 /* Main.storyboard */,
-				15473FC11AA999EC00A82C81 /* Images.xcassets */,
-				15473FC31AA999EC00A82C81 /* LaunchScreen.xib */,
+				CED39AAF1AD3E6F2006D3109 /* JsonParser.swift */,
+				4AC922AF1AC5521C007908E7 /* Line.swift */,
+				4A6587D21ABC1FAB0008A949 /* LocalChatViewController.swift */,
+				249FE6D21ABF09C1002EAA5D /* LocationController.swift */,
+				15473FBC1AA999EC00A82C81 /* LoginViewController.swift */,
+				CE3DCD1E1AD5687600E394AE /* SettingsViewController.swift */,
+				4AC922AD1AC54D44007908E7 /* User.swift */,
+				CE3DCD221AD596A800E394AE /* Main.storyboard */,
 				15473FB81AA999EC00A82C81 /* Supporting Files */,
 			);
 			path = LocalChat;
@@ -90,6 +109,9 @@
 		15473FB81AA999EC00A82C81 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				15473FBA1AA999EC00A82C81 /* AppDelegate.swift */,
+				15473FC11AA999EC00A82C81 /* Images.xcassets */,
+				15473FC31AA999EC00A82C81 /* LaunchScreen.xib */,
 				15473FB91AA999EC00A82C81 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -192,7 +214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15473FC01AA999EC00A82C81 /* Main.storyboard in Resources */,
+				CE3DCD241AD596A800E394AE /* Main.storyboard in Resources */,
 				15473FC51AA999EC00A82C81 /* LaunchScreen.xib in Resources */,
 				15473FC21AA999EC00A82C81 /* Images.xcassets in Resources */,
 			);
@@ -212,8 +234,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15473FBD1AA999EC00A82C81 /* ViewController.swift in Sources */,
+				249FE6D31ABF09C1002EAA5D /* LocationController.swift in Sources */,
+				15473FBD1AA999EC00A82C81 /* LoginViewController.swift in Sources */,
 				15473FBB1AA999EC00A82C81 /* AppDelegate.swift in Sources */,
+				4AC922B01AC5521C007908E7 /* Line.swift in Sources */,
+				4AC922AE1AC54D44007908E7 /* User.swift in Sources */,
+				CED39AB01AD3E6F2006D3109 /* JsonParser.swift in Sources */,
+				4A6587D31ABC1FAB0008A949 /* LocalChatViewController.swift in Sources */,
+				CE3DCD1F1AD5687600E394AE /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,20 +264,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		15473FBE1AA999EC00A82C81 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				15473FBF1AA999EC00A82C81 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		15473FC31AA999EC00A82C81 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				15473FC41AA999EC00A82C81 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		CE3DCD221AD596A800E394AE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE3DCD231AD596A800E394AE /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -407,6 +435,7 @@
 				15473FD61AA999EC00A82C81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		15473FD71AA999EC00A82C81 /* Build configuration list for PBXNativeTarget "LocalChatTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +444,7 @@
 				15473FD91AA999EC00A82C81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

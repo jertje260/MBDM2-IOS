@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B351A0CD-27CB-444C-87F7-BA54C7DFEA91</string>
+	<key>IDESourceControlProjectName</key>
+	<string>LocalChat</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DAF5B1D9CEDD3E39B8CDE16B1EA7A70B81663CDB</key>
+		<string>https://github.com/jertje260/MBDM2-IOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>LocalChat.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DAF5B1D9CEDD3E39B8CDE16B1EA7A70B81663CDB</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jertje260/MBDM2-IOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DAF5B1D9CEDD3E39B8CDE16B1EA7A70B81663CDB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DAF5B1D9CEDD3E39B8CDE16B1EA7A70B81663CDB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>LocalChat-2</string>
+		</dict>
+	</array>
+</dict>
+</plist>

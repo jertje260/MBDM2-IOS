@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         if let username = NSUserDefaults.standardUserDefaults().stringForKey("Username") {
             JsonParser.getUser(username)
+            self.navigationController?.navigationBarHidden = true;
             performSegueWithIdentifier("LoggedIn", sender: nil)
         }
 
@@ -35,17 +36,20 @@ class LoginViewController: UIViewController {
                         self.loginPassword?.text = ""
                         self.loginName?.text = ""
                         self.ErrorMsg?.text = ""
+                        self.navigationController?.navigationBarHidden = true;
                         self.performSegueWithIdentifier("LoggedIn", sender: nil)
                     } else if let msg = callback as? String{
                         self.loginPassword?.text = ""
                         self.loginName?.text = ""
                         self.ErrorMsg?.text = msg
+                        self.ErrorMsg?.sizeToFit()
                     }
                 })
             }
         }
         else {
             ErrorMsg.text = "Please fill out your Username and Password"
+            ErrorMsg.sizeToFit()
         }
     }
 

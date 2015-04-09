@@ -20,6 +20,7 @@
 		CE3DCD1F1AD5687600E394AE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DCD1E1AD5687600E394AE /* SettingsViewController.swift */; };
 		CE3DCD241AD596A800E394AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3DCD221AD596A800E394AE /* Main.storyboard */; };
 		CED39AB01AD3E6F2006D3109 /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED39AAF1AD3E6F2006D3109 /* JsonParser.swift */; };
+		CED878281AD667B00078B39B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED878271AD667B00078B39B /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		CE3DCD1E1AD5687600E394AE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE3DCD231AD596A800E394AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CED39AAF1AD3E6F2006D3109 /* JsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
+		CED878271AD667B00078B39B /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		15473FB71AA999EC00A82C81 /* LocalChat */ = {
 			isa = PBXGroup;
 			children = (
+				CED878271AD667B00078B39B /* DetailViewController.swift */,
 				CED39AAF1AD3E6F2006D3109 /* JsonParser.swift */,
 				4AC922AF1AC5521C007908E7 /* Line.swift */,
 				4A6587D21ABC1FAB0008A949 /* LocalChatViewController.swift */,
@@ -234,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED878281AD667B00078B39B /* DetailViewController.swift in Sources */,
 				249FE6D31ABF09C1002EAA5D /* LocationController.swift in Sources */,
 				15473FBD1AA999EC00A82C81 /* LoginViewController.swift in Sources */,
 				15473FBB1AA999EC00A82C81 /* AppDelegate.swift in Sources */,

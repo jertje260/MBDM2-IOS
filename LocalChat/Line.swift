@@ -13,6 +13,8 @@ public class Line {
     var user:User?
     var message:String?
     var moment:NSDate?
+    var Latitude:Double?
+    var Longitude:Double?
     
     init(us:User, mes:String, mom:NSDate){
         user = us

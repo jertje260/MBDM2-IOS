@@ -6,37 +6,52 @@
 //  Copyright (c) 2015 Jeroen Broekhuizen. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
 
 class LocalChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
-    let MessageCellIdentifier = "MessageCell"
+    private let MessageCellIdentifier = "MessageCell"
     private var MessagesModel = Array<Line>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Messages.delegate = self
         Messages.dataSource = self
-        //testmessage
-        var l = Line()
-        l.moment = NSDate()
-        l.message = "Testmessage"
-        l.user = User()
-        l.user?.displayName = "test"
-        MessagesModel.append(l)
+        
+        
+       
         
         loadMessages()
-        // Set backbutton invisible
-        self.navigationItem.hidesBackButton = true;
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "DetailView"){
+            var destination = segue.destinationViewController as? UIViewController
+            if let navCon = destination as? UINavigationController{
+                destination = navCon.visibleViewController
+            }
+            if let dvc = destination as? DetailViewController {
+                println("preparing for segue")
+                var messageIndex = Messages!.indexPathForSelectedRow()!.row
+                var selectedMessage = self.MessagesModel[messageIndex]
+                println("\(selectedMessage.message!)")
+                dvc.message = selectedMessage
+            }
+        }
+    }
+    
+
+    
     
     // LocalChat screen
     @IBOutlet weak var sendButton: UIButton!
@@ -55,8 +70,23 @@ class LocalChatViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func loadMessages(){
+        //testmessage
+        var l = Line()
+        l.moment = NSDate()
+        l.message = "Testmessage"
+        l.user = User()
+        l.user?.displayName = "test"
+        MessagesModel.append(l)
+        var k = Line()
+        k.moment = NSDate()
+        k.message = "Testmessage2"
+        k.user = User()
+        k.user?.displayName = "test2"
+        MessagesModel.append(k)
+        
         
     }
+
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -70,8 +100,8 @@ class LocalChatViewController: UIViewController, UITableViewDataSource, UITableV
         let cell = tableView.dequeueReusableCellWithIdentifier(MessageCellIdentifier, forIndexPath: indexPath) as UITableViewCell
         
         let row = indexPath.row
-        cell.textLabel?.text = "\(MessagesModel[row].user!.displayName!) wrote: \(MessagesModel[row].message!)"
-        
+        cell.textLabel?.text = "\(MessagesModel[row].user!.displayName!) wrote:"
+        cell.detailTextLabel?.text = "\(MessagesModel[row].message!)"
         return cell
     }
 }

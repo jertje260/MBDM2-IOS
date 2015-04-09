@@ -12,7 +12,6 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBarHidden = true;
         loadUserData()
     }
 
@@ -42,6 +41,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func Logout(sender: AnyObject) {
         NSUserDefaults.resetStandardUserDefaults()
+        navigationController?.navigationBarHidden = false
         navigationController?.popViewControllerAnimated(true)
     }
     

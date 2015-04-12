@@ -13,7 +13,6 @@
 		15473FC51AA999EC00A82C81 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15473FC31AA999EC00A82C81 /* LaunchScreen.xib */; };
 		15473FD11AA999EC00A82C81 /* LocalChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15473FD01AA999EC00A82C81 /* LocalChatTests.swift */; };
 		249FE6D31ABF09C1002EAA5D /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249FE6D21ABF09C1002EAA5D /* LocationController.swift */; };
-		249FE6D51ABF0D81002EAA5D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249FE6D41ABF0D81002EAA5D /* CoreLocation.framework */; };
 		4A6587D31ABC1FAB0008A949 /* LocalChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6587D21ABC1FAB0008A949 /* LocalChatViewController.swift */; };
 		4AC922AE1AC54D44007908E7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC922AD1AC54D44007908E7 /* User.swift */; };
 		4AC922B01AC5521C007908E7 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC922AF1AC5521C007908E7 /* Line.swift */; };
@@ -21,6 +20,7 @@
 		CE3DCD241AD596A800E394AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3DCD221AD596A800E394AE /* Main.storyboard */; };
 		CED39AB01AD3E6F2006D3109 /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED39AAF1AD3E6F2006D3109 /* JsonParser.swift */; };
 		CED878281AD667B00078B39B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED878271AD667B00078B39B /* DetailViewController.swift */; };
+		CEDA99B61ADA85AB00CD957C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA99B51ADA85AB00CD957C /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +44,6 @@
 		15473FCF1AA999EC00A82C81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15473FD01AA999EC00A82C81 /* LocalChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalChatTests.swift; sourceTree = "<group>"; };
 		249FE6D21ABF09C1002EAA5D /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
-		249FE6D41ABF0D81002EAA5D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4A6587D21ABC1FAB0008A949 /* LocalChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalChatViewController.swift; sourceTree = "<group>"; };
 		4AC922AD1AC54D44007908E7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4AC922AF1AC5521C007908E7 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
@@ -52,6 +51,7 @@
 		CE3DCD231AD596A800E394AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CED39AAF1AD3E6F2006D3109 /* JsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
 		CED878271AD667B00078B39B /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CEDA99B51ADA85AB00CD957C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				249FE6D51ABF0D81002EAA5D /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +75,6 @@
 		15473FAC1AA999EC00A82C81 = {
 			isa = PBXGroup;
 			children = (
-				249FE6D41ABF0D81002EAA5D /* CoreLocation.framework */,
 				15473FB71AA999EC00A82C81 /* LocalChat */,
 				15473FCD1AA999EC00A82C81 /* LocalChatTests */,
 				15473FB61AA999EC00A82C81 /* Products */,
@@ -95,15 +93,11 @@
 		15473FB71AA999EC00A82C81 /* LocalChat */ = {
 			isa = PBXGroup;
 			children = (
-				CED878271AD667B00078B39B /* DetailViewController.swift */,
-				CED39AAF1AD3E6F2006D3109 /* JsonParser.swift */,
-				4AC922AF1AC5521C007908E7 /* Line.swift */,
-				4A6587D21ABC1FAB0008A949 /* LocalChatViewController.swift */,
-				249FE6D21ABF09C1002EAA5D /* LocationController.swift */,
-				15473FBC1AA999EC00A82C81 /* LoginViewController.swift */,
-				CE3DCD1E1AD5687600E394AE /* SettingsViewController.swift */,
-				4AC922AD1AC54D44007908E7 /* User.swift */,
 				CE3DCD221AD596A800E394AE /* Main.storyboard */,
+				CEDA99B81ADA85E200CD957C /* ViewControllers */,
+				CED39AAF1AD3E6F2006D3109 /* JsonParser.swift */,
+				249FE6D21ABF09C1002EAA5D /* LocationController.swift */,
+				CEDA99B71ADA85CA00CD957C /* Models */,
 				15473FB81AA999EC00A82C81 /* Supporting Files */,
 			);
 			path = LocalChat;
@@ -135,6 +129,27 @@
 				15473FCF1AA999EC00A82C81 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CEDA99B71ADA85CA00CD957C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4AC922AF1AC5521C007908E7 /* Line.swift */,
+				4AC922AD1AC54D44007908E7 /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CEDA99B81ADA85E200CD957C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4A6587D21ABC1FAB0008A949 /* LocalChatViewController.swift */,
+				15473FBC1AA999EC00A82C81 /* LoginViewController.swift */,
+				CEDA99B51ADA85AB00CD957C /* RegisterViewController.swift */,
+				CE3DCD1E1AD5687600E394AE /* SettingsViewController.swift */,
+				CED878271AD667B00078B39B /* DetailViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CED878281AD667B00078B39B /* DetailViewController.swift in Sources */,
+				CEDA99B61ADA85AB00CD957C /* RegisterViewController.swift in Sources */,
 				249FE6D31ABF09C1002EAA5D /* LocationController.swift in Sources */,
 				15473FBD1AA999EC00A82C81 /* LoginViewController.swift in Sources */,
 				15473FBB1AA999EC00A82C81 /* AppDelegate.swift in Sources */,

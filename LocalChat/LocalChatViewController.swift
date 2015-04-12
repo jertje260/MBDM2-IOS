@@ -8,24 +8,38 @@
 
 
 import UIKit
+import CoreLocation
 
-class LocalChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class LocalChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
     
     private let MessageCellIdentifier = "MessageCell"
     private var MessagesModel = Array<Line>()
+    private var timer : NSTimer? = nil
+    var manager:CLLocationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         Messages.delegate = self
         Messages.dataSource = self
         
-        
-       
+        manager = CLLocationManager()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        manager.requestAlwaysAuthorization()
+        manager.startUpdatingLocation()
         
         loadMessages()
-        
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        timer = NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: "loadMessages", userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        timer = nil
     }
     
     
@@ -35,16 +49,14 @@ class LocalChatViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "DetailView"){
+        if (segue.identifier == "DetailView") {
             var destination = segue.destinationViewController as? UIViewController
             if let navCon = destination as? UINavigationController{
                 destination = navCon.visibleViewController
             }
             if let dvc = destination as? DetailViewController {
-                println("preparing for segue")
                 var messageIndex = Messages!.indexPathForSelectedRow()!.row
                 var selectedMessage = self.MessagesModel[messageIndex]
-                println("\(selectedMessage.message!)")
                 dvc.message = selectedMessage
             }
         }
@@ -70,21 +82,20 @@ class LocalChatViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func loadMessages(){
-        //testmessage
-        var l = Line()
-        l.moment = NSDate()
-        l.message = "Testmessage"
-        l.user = User()
-        l.user?.displayName = "test"
-        MessagesModel.append(l)
-        var k = Line()
-        k.moment = NSDate()
-        k.message = "Testmessage2"
-        k.user = User()
-        k.user?.displayName = "test2"
-        MessagesModel.append(k)
+        // temporary
+        var lat = Double(51.9961)
+        var long = Double(5.4555)
         
-        
+        JsonParser.getMessages(lat, longitude: long) { (callback) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if let c = callback as? Array<Line> {
+                    self.MessagesModel = c
+                    self.Messages.reloadData()
+                } else {
+                    println("no message received")
+                }
+            })
+        }
     }
 
     
@@ -97,12 +108,17 @@ class LocalChatViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(MessageCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(MessageCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
         
         let row = indexPath.row
         cell.textLabel?.text = "\(MessagesModel[row].user!.displayName!) wrote:"
         cell.detailTextLabel?.text = "\(MessagesModel[row].message!)"
         return cell
+    }
+    
+    func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
+        println("update")
+        println(locations)
     }
 }
 

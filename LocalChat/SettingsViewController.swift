@@ -32,6 +32,7 @@ class SettingsViewController: UIViewController {
         UsernameLabel?.text = preferences.stringForKey("Username")
         DisplaynameField?.text = preferences.stringForKey("Displayname")
         RadiusSlider?.value = preferences.floatForKey("Radius")
+        SliderLabel.text = preferences.stringForKey("Radius")
     }
     
     @IBAction func sliderValueChanged(sender: UISlider) {
@@ -40,9 +41,13 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func Logout(sender: AnyObject) {
-        NSUserDefaults.resetStandardUserDefaults()
-        navigationController?.navigationBarHidden = false
-        navigationController?.popViewControllerAnimated(true)
+        let preferences = NSUserDefaults.standardUserDefaults()
+        preferences.removeObjectForKey("UserID")
+        preferences.removeObjectForKey("Username")
+        preferences.removeObjectForKey("Displayname")
+        preferences.removeObjectForKey("Radius")
+        preferences.synchronize()
+        performSegueWithIdentifier("Logout", sender: nil)
     }
     
     @IBAction func SaveChanges(sender: AnyObject) {

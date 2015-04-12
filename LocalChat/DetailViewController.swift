@@ -32,13 +32,12 @@ class DetailViewController: UIViewController {
     
     func loadViewData(){
         
-                MessageText.text = message!.message!
-//                Username.text = message!.user!.userName!
-                DisplayName.text = message!.user!.displayName!
-        //        var formatter = NSDateFormatter()
-        //        Moment?.text = formatter.stringFromDate(self.message!.moment!)
-        //        Latitude?.text = String(format:"%f", self.message!.Latitude!)
-        //        Longitude?.text = String(format:"%f", self.message!.Longitude!)
+        MessageText.text = message!.message!
+        Username.text = message!.user!.userName!
+        DisplayName.text = message!.user!.displayName!
+        Moment?.text = self.message!.moment!.description
+        Latitude?.text = String(format:"%f", self.message!.Latitude!)
+        Longitude?.text = String(format:"%f", self.message!.Longitude!)
 
     }
     

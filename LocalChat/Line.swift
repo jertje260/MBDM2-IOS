@@ -16,10 +16,12 @@ public class Line {
     var Latitude:Double?
     var Longitude:Double?
     
-    init(us:User, mes:String, mom:NSDate){
+    init(us:User, mes:String, mom:NSDate, lat:Double, lon:Double){
         user = us
         message = mes
         moment = mom
+        Latitude = lat
+        Longitude = lon
     }
     
     init(){

@@ -18,5 +18,10 @@ public class User {
     init(){
         
     }
-
+    
+    init(name:String, dname:String){
+        userName = name
+        displayName = dname
+    }
+    
 }

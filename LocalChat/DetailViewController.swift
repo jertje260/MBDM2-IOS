@@ -12,35 +12,6 @@ class DetailViewController: UIViewController {
     
     var message:Line?;
     
-    required init(coder aDecoder: NSCoder){
-        super.init(coder: aDecoder)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
-        if (message != nil){
-            loadViewData()
-        }
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func loadViewData(){
-        
-        MessageText.text = message!.message!
-        Username.text = message!.user!.userName!
-        DisplayName.text = message!.user!.displayName!
-        Moment?.text = self.message!.moment!.description
-        Latitude?.text = String(format:"%f", self.message!.Latitude!)
-        Longitude?.text = String(format:"%f", self.message!.Longitude!)
-
-    }
-    
     @IBOutlet weak var MessageText: UILabel!
     @IBOutlet weak var Username: UILabel!
     @IBOutlet weak var DisplayName: UILabel!
@@ -48,5 +19,25 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var Latitude: UILabel!
     @IBOutlet weak var Longitude: UILabel!
     
+    required init(coder aDecoder: NSCoder){
+        super.init(coder: aDecoder)
+    }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if (message != nil){
+            loadViewData()
+        }
+    }
+    
+    func loadViewData(){
+        MessageText.text = message!.message!
+        Username.text = message!.user!.userName!
+        DisplayName.text = message!.user!.displayName!
+        var dateForm = NSDateFormatter()
+        dateForm.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        Moment?.text = "\(dateForm.stringFromDate(self.message!.moment!))"
+        Latitude?.text = String(format:"%f", self.message!.Latitude!)
+        Longitude?.text = String(format:"%f", self.message!.Longitude!)
+    }    
 }

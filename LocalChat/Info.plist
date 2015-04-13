@@ -43,5 +43,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription </key>
+	<string>LocalChat needs your location to recieve and send messages.</string>
 </dict>
 </plist>

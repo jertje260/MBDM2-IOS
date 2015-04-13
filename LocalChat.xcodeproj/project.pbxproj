@@ -12,7 +12,6 @@
 		15473FC21AA999EC00A82C81 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15473FC11AA999EC00A82C81 /* Images.xcassets */; };
 		15473FC51AA999EC00A82C81 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15473FC31AA999EC00A82C81 /* LaunchScreen.xib */; };
 		15473FD11AA999EC00A82C81 /* LocalChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15473FD01AA999EC00A82C81 /* LocalChatTests.swift */; };
-		249FE6D31ABF09C1002EAA5D /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249FE6D21ABF09C1002EAA5D /* LocationController.swift */; };
 		4A6587D31ABC1FAB0008A949 /* LocalChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6587D21ABC1FAB0008A949 /* LocalChatViewController.swift */; };
 		4AC922AE1AC54D44007908E7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC922AD1AC54D44007908E7 /* User.swift */; };
 		4AC922B01AC5521C007908E7 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC922AF1AC5521C007908E7 /* Line.swift */; };
@@ -43,7 +42,6 @@
 		15473FCA1AA999EC00A82C81 /* LocalChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15473FCF1AA999EC00A82C81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15473FD01AA999EC00A82C81 /* LocalChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalChatTests.swift; sourceTree = "<group>"; };
-		249FE6D21ABF09C1002EAA5D /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		4A6587D21ABC1FAB0008A949 /* LocalChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalChatViewController.swift; sourceTree = "<group>"; };
 		4AC922AD1AC54D44007908E7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4AC922AF1AC5521C007908E7 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 				CE3DCD221AD596A800E394AE /* Main.storyboard */,
 				CEDA99B81ADA85E200CD957C /* ViewControllers */,
 				CED39AAF1AD3E6F2006D3109 /* JsonParser.swift */,
-				249FE6D21ABF09C1002EAA5D /* LocationController.swift */,
 				CEDA99B71ADA85CA00CD957C /* Models */,
 				15473FB81AA999EC00A82C81 /* Supporting Files */,
 			);
@@ -254,7 +251,6 @@
 			files = (
 				CED878281AD667B00078B39B /* DetailViewController.swift in Sources */,
 				CEDA99B61ADA85AB00CD957C /* RegisterViewController.swift in Sources */,
-				249FE6D31ABF09C1002EAA5D /* LocationController.swift in Sources */,
 				15473FBD1AA999EC00A82C81 /* LoginViewController.swift in Sources */,
 				15473FBB1AA999EC00A82C81 /* AppDelegate.swift in Sources */,
 				4AC922B01AC5521C007908E7 /* Line.swift in Sources */,

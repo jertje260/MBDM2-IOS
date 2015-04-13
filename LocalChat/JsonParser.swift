@@ -134,7 +134,7 @@ class JsonParser {
                         }
                     }
                 }
-                callback(returnMessages)
+                callback(returnMessages.reverse())
             }
             
             task.resume()
@@ -275,6 +275,55 @@ class JsonParser {
         
         task.resume()
     }
+    
+    class func sendMessage(msg: String, latitude: Double, longitude: Double, callback: (String) ->()){
+        let urlString = urlstart + "/lines"
+        let url :NSURL = NSURL(string: urlString)!
+        let request = NSMutableURLRequest(URL: url)
+        let session = NSURLSession.sharedSession()
+        let Userid = NSUserDefaults.standardUserDefaults().stringForKey("UserID")!
+        
+        request.HTTPMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        
+        let params = "User=\(Userid)&Body=\(msg)&Latitude=\(latitude)&Longitude=\(longitude)"
+        var err: NSError?
+        request.HTTPBody = params.dataUsingEncoding(NSUTF8StringEncoding)
+        var returnMsg = ""
+        
+        var task = session.dataTaskWithRequest(request, completionHandler:{data, response, error -> Void in
+            
+            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+            var err: NSError?
+            
+            var json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &err) as? NSDictionary
+            
+            if(err != nil) {
+                println(err!.localizedDescription)
+                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                returnMsg = "Something went wrong"
+                callback(returnMsg)
+            }
+            else {
+                if let parseJSON = json {
+
+                    if let ID = parseJSON["_id"] as? String {
+                        returnMsg = "success"
+                        callback(returnMsg)
+                    }
+                }
+                else {
+                    let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                    println("Error could not parse JSON: \(jsonStr)")
+                }
+            }
+        })
+        
+        task.resume()
+    }
+
     
     
 }

@@ -10,25 +10,25 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var ErrorMsg: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var loginName: UITextField!
+    @IBOutlet weak var loginPassword: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBarHidden = false;
+        self.navigationController?.navigationItem.hidesBackButton = true
         if let username = NSUserDefaults.standardUserDefaults().stringForKey("Username") {
             JsonParser.getUser(username)
             self.navigationController?.navigationBarHidden = true;
             performSegueWithIdentifier("LoggedIn", sender: nil)
         }
-
-        // Do any additional setup after loading the view, typically from a nib.
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func login(sender :UIButton){
-        
         if(!loginName.text.isEmpty && !loginPassword.text.isEmpty){
             JsonParser.login(username: loginName.text, password: loginPassword.text) { (callback) in
                 dispatch_async(dispatch_get_main_queue(), {
@@ -52,14 +52,5 @@ class LoginViewController: UIViewController {
             ErrorMsg.sizeToFit()
         }
     }
-
-    @IBOutlet weak var ErrorMsg: UILabel!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var registerButton: UIButton!
-    @IBOutlet weak var loginName: UITextField!
-    @IBOutlet weak var loginPassword: UITextField!
-    
-
-    
 }
 

@@ -10,15 +10,6 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        loadUserData()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-    }
     @IBOutlet weak var UsernameLabel: UILabel!
     @IBOutlet weak var DisplaynameField: UITextField!
     @IBOutlet weak var RadiusSlider: UISlider!
@@ -27,17 +18,19 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var ConfirmPasswordField: UITextField!
     @IBOutlet weak var ErrorLabel: UILabel!
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadUserData()
+    }
+
+    
     func loadUserData(){
         let preferences = NSUserDefaults.standardUserDefaults()
         UsernameLabel?.text = preferences.stringForKey("Username")
         DisplaynameField?.text = preferences.stringForKey("Displayname")
         RadiusSlider?.value = preferences.floatForKey("Radius")
         SliderLabel.text = preferences.stringForKey("Radius")
-    }
-    
-    @IBAction func sliderValueChanged(sender: UISlider) {
-        var currentValue = Int(sender.value)
-        SliderLabel.text = "\(currentValue) m"
     }
     
     @IBAction func Logout(sender: AnyObject) {
@@ -72,5 +65,8 @@ class SettingsViewController: UIViewController {
         }
         
     }
- 
+     @IBAction func sliderValueChanged(sender: UISlider) {
+        var currentValue = Int(sender.value)
+        SliderLabel.text = "\(currentValue) m"
+    }
 }

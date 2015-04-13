@@ -16,37 +16,13 @@ class LocalChatViewController: UIViewController, UITableViewDataSource, UITableV
     private let MessageCellIdentifier = "MessageCell"
     private var MessagesModel = Array<Line>()
     private var timer : NSTimer? = nil
+    private var lastLocation : CLLocation = CLLocation(latitude: 51.9961, longitude: 5.4555) // default location in case gps isnt functioning correctly
     var manager:CLLocationManager!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-        Messages.delegate = self
-        Messages.dataSource = self
-        
-        manager = CLLocationManager()
-        manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        manager.requestAlwaysAuthorization()
-        manager.startUpdatingLocation()
-        
-        loadMessages()
-    }
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var sendText: UITextField!
+    @IBOutlet weak var Messages: UITableView!
     
-    override func viewWillAppear(animated: Bool) {
-        timer = NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: "loadMessages", userInfo: nil, repeats: true)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        timer = nil
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "DetailView") {
@@ -62,31 +38,45 @@ class LocalChatViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-
+    override func viewDidAppear(animated: Bool) {
+        scrollToBottom()
+    }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setGPSManager()
+        loadMessages()
+    }
     
-    // LocalChat screen
-    @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var sendText: UITextField!
-    @IBOutlet weak var Messages: UITableView!
+    override func viewWillAppear(animated: Bool) {
+        timer = NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: "loadMessages", userInfo: nil, repeats: true)
+        scrollToBottom()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        timer = nil
+    }
+    
     
     @IBAction func sendMessage(sender: UIButton!){
         var text = sendText.text
         sendText.text = ""
-        
-        
-        //var
-        
-        // TODO
-        // get gps pos and send to api
+        var lat = Double(self.lastLocation.coordinate.latitude)
+        var long = Double(self.lastLocation.coordinate.longitude)
+        JsonParser.sendMessage(text, latitude: lat ,longitude: long ) {(callback) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if (callback == "success") {
+                    self.loadMessages()
+                    self.scrollToBottom()
+                } else {
+                    println("something went wrong")
+                }
+            })
+        }
     }
     
     func loadMessages(){
-        // temporary
-        var lat = Double(51.9961)
-        var long = Double(5.4555)
-        
-        JsonParser.getMessages(lat, longitude: long) { (callback) in
+        JsonParser.getMessages(self.lastLocation.coordinate.latitude, longitude: self.lastLocation.coordinate.longitude) { (callback) in
             dispatch_async(dispatch_get_main_queue(), {
                 if let c = callback as? Array<Line> {
                     self.MessagesModel = c
@@ -97,8 +87,31 @@ class LocalChatViewController: UIViewController, UITableViewDataSource, UITableV
             })
         }
     }
-
     
+    func scrollToBottom(){
+        let sectionCount = Messages.numberOfSections()
+        let rowsInLastSection = Messages.numberOfRowsInSection(sectionCount-1)
+        if (rowsInLastSection != 0){
+            let indexPath:NSIndexPath = NSIndexPath(forRow: rowsInLastSection-1, inSection: sectionCount-1)
+            self.Messages.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+        }
+    }
+    
+    func setGPSManager(){
+        Messages.delegate = self
+        Messages.dataSource = self
+        
+        manager = CLLocationManager()
+        manager.delegate = self
+        manager.distanceFilter = 50 // 50m
+        manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        if CLLocationManager.authorizationStatus() == .NotDetermined {
+            manager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    
+    //table view methods
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -108,17 +121,38 @@ class LocalChatViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(MessageCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(MessageCellIdentifier, forIndexPath: indexPath) as UITableViewCell
         
         let row = indexPath.row
         cell.textLabel?.text = "\(MessagesModel[row].user!.displayName!) wrote:"
+        // tried wordwrapping into multiple lines, but needs custom cell...
+        //cell.detailTextLabel?.numberOfLines = 5
         cell.detailTextLabel?.text = "\(MessagesModel[row].message!)"
         return cell
     }
     
+    //location methods
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
-        println("update")
-        println(locations)
+        if let lastLocation = locations.last as? CLLocation {
+            println("update location")
+            self.lastLocation = lastLocation
+            println("\(lastLocation.coordinate.latitude):\(lastLocation.coordinate.longitude)")
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        println("didChangeAuthorizationStatus")
+    
+        switch CLLocationManager.authorizationStatus() {
+        case .Authorized, .AuthorizedWhenInUse:
+            manager.startUpdatingLocation()
+            println("updating location")
+        case .NotDetermined:
+            manager.requestWhenInUseAuthorization()
+            println("authorization not determined")
+        case .Restricted, .Denied:
+            println("restricted/denied")
+        }
     }
 }
 

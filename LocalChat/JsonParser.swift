@@ -21,7 +21,7 @@ extension NSDate {
 }
 
 class JsonParser {
-    class var urlstart : String {return "http://192.168.2.5:3000"}
+    class var urlstart : String {return "http://localchat-api.herokuapp.com"}
     
     class func login(username Username:String, password Password:String, callback: (AnyObject) ->()){
         var loginUser:User = User()
@@ -141,21 +141,22 @@ class JsonParser {
         }
     }
     
-    class func getUser(username: String){
+    class func getUser(username: String, callback: (String) ->()){
         let urlString = urlstart + "/users/\(username)"
         let url = NSURL(string: urlString)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!){(data, response, error) in
             var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
             var err: NSError?
-            
+            var msg = ""
             if(strData != ""){
                 var json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &err) as? NSDictionary
                 
                 if(err != nil) {
                     println(err!.localizedDescription)
                     let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                    println("error")
+                    msg = "Server might be having issues, could not handle your request"
+                    callback(msg)
 
                 }
                 else {
@@ -171,6 +172,9 @@ class JsonParser {
                                         preferences.setObject(Displayname, forKey: "Displayname")
                                         preferences.setObject(Radius, forKey: "Radius")
                                         preferences.synchronize()
+                                        msg = "User set"
+                                        sleep(3)
+                                        callback(msg)
                                     }
                                 }
                             }

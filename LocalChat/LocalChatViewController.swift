@@ -81,6 +81,7 @@ class LocalChatViewController: UIViewController, UITableViewDataSource, UITableV
                 if let c = callback as? Array<Line> {
                     self.MessagesModel = c
                     self.Messages.reloadData()
+                    self.scrollToBottom()
                 } else {
                     println("no message received")
                 }

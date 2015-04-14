@@ -22,9 +22,16 @@ class LoginViewController: UIViewController {
         self.navigationController?.navigationBarHidden = false;
         self.navigationController?.navigationItem.hidesBackButton = true
         if let username = NSUserDefaults.standardUserDefaults().stringForKey("Username") {
-            JsonParser.getUser(username)
-            self.navigationController?.navigationBarHidden = true;
-            performSegueWithIdentifier("LoggedIn", sender: nil)
+            JsonParser.getUser(username) {(callback) in
+                dispatch_async(dispatch_get_main_queue(), {
+                    if (callback == "User set"){
+                        self.navigationController?.navigationBarHidden = true;
+                        self.performSegueWithIdentifier("LoggedIn", sender: nil)
+                    } else {
+                        self.ErrorMsg.text = callback
+                    }
+                })
+            }
         }
     }
     
